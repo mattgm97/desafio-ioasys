@@ -1,33 +1,100 @@
 .App {
   text-align: center;
+  background-color: #ebe9d7;
+  
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.login-screen{
+  padding-top: 10%
+}
+.welcome {
+  
+  height: 64px;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #383743;
+  padding: 20%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.lorem-ipsum{
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.44;
+  letter-spacing: -0.3px;
+  text-align: center;
+  color: #383743;
 }
 
-.App-link {
-  color: #61dafb;
+#login-buttom{
+  width: 324px;
+  height: 52.8px;
+  border-radius: 3.6px;
+  background-color: #57bbbc;
+  border-color: #57bbbc !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input 				{
+  font-size:1rem;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:100%;
+  border:none;
+  background-color: transparent;
+  border-bottom: solid 0.7px #383743;
+  opacity: 0.5;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: -0.3px;
+  text-align: left;
+  color: #383743;
+  font-family: Roboto;
+}
+
+#exampleInputEmail1 {
+  
+  background-image: url(./recursos/ic-email.png);
+    background-position: 7px 7px;
+    background-repeat: no-repeat;
+
+}
+
+#exampleInputPassword1 {
+  
+  background-image: url(./recursos/ic-cadeado.png);
+    background-position: 7px 7px;
+    background-repeat: no-repeat;
+
+}
+
+::placeholder {
+  
+  padding-left: 10%
+}
+input[type=email], input[type=password]{
+  padding-left: 10%
+}
+input:focus 		{ outline:none; }
+
+#pesquisa {
+  font-family: Roboto;
+  font-size: 32px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.22;
+  letter-spacing: -0.5px;
+  text-align: center;
+  color: #383743;
+  margin-top: 25%;
 }
