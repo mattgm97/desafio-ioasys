@@ -12,6 +12,7 @@ class App extends Component {
     access: {},
     showInput: false,
     companieShow: false,
+    errodeLogin: false,
     company: {}
   }
 
@@ -46,9 +47,11 @@ class App extends Component {
             uid: values[6]
           }
         });
-        sessionStorage.setItem('acessos', JSON.stringify({"access-token": values[0],
-        client: values[2],
-        uid: values[6]}));
+        sessionStorage.setItem('acessos', JSON.stringify({
+          "access-token": values[0],
+          client: values[2],
+          uid: values[6]
+        }));
         //console.log(this.state.access)
         return res.json()
       })
@@ -56,7 +59,11 @@ class App extends Component {
         //console.log(response)
         this.setState({ logged: true })
       })
-      .catch(err => console.log("Erro de autentificação"))
+      .catch(err => {
+        this.setState({ errodeLogin: true })
+        console.log("Erro de autentificação ou problema na rede, por favor tentar novamente mais tarde")
+      }
+      )
 
   }
 
@@ -75,11 +82,11 @@ class App extends Component {
     fetch(`http://empresas.ioasys.com.br/api/v1/enterprises?name=${searchText}`,
       {
         headers: this.state.access
-        
+
       })
       .then(res => res.json())
       .then(result => {
-       // console.log(result)
+        // console.log(result)
         this.setState({
           companieShow: true,
           company: result
@@ -89,11 +96,12 @@ class App extends Component {
 
   }
 
-  showMoreInfo = () => {
-
-  }
-
   render() {
+
+
+    if (this.state.errodeLogin) {
+      return <h1>Erro de autentificação ou problema na rede, por favor tentar novamente mais tarde.</h1>
+    }
 
     if (!this.state.logged) {
       return (
@@ -129,19 +137,20 @@ class App extends Component {
       )
     }
 
+
     let Empresas = null;
-    if(this.state.companieShow) {
+    if (this.state.companieShow) {
       //console.log(this.state.company.enterprises)
       Empresas = (
         <div>
-         {this.state.company.enterprises.map((enterprise, index)=>{
-           return <Results dados={enterprise} key={index}/>
-         })}
+          {this.state.company.enterprises.map((enterprise, index) => {
+            return <Results dados={enterprise} key={index} />
+          })}
         </div>
-        
-     // 
+
+        // 
       )
-      
+
     }
 
     return (
@@ -151,7 +160,7 @@ class App extends Component {
         {Empresas}
       </div>
 
-      
+
     );
   }
 }
