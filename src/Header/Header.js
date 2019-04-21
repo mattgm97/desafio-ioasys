@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import logo from '../recursos/logo-nav.png'
 import lupa from '../recursos/ic-search-copy.png'
 import close from '../recursos/ic-close.png'
@@ -8,9 +9,9 @@ import './Header.css';
 const Header = (props) => {
 
 
-    let busca = (<><a className="navbar-brand" className="center-block" href="#">
+    let busca = (<><Link to="/" className="navbar-brand" className="center-block" href="#">
         <img src={logo} alt="" />
-    </a><img src={lupa} alt="lupa" onClick={props.showField} /></>)
+    </Link><img src={lupa} alt="lupa" onClick={props.showField} /></>)
     
     if (props.mostrar) {
         busca = (
@@ -18,7 +19,7 @@ const Header = (props) => {
         <div className="input-group-prepend">
           <span className=""><img src={lupa} alt="lupa"  /></span>
         </div>
-        <input type="text" placeholder="Pesquisar" id="search" className="form-control" onChange={props.showCompanies}/>
+        <input type="text" placeholder="Pesquisar" id="search" className="form-control" onChange={(event) => props.executarPesquisa(event)}/>
         <div className="input-group-append">
           <span className=""><img src={close} alt="lupa" onClick={props.showField} /></span>
         </div>

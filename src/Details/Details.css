@@ -1,0 +1,29 @@
+#infocard {
+    margin: 5%;
+   
+}
+#companyPhoto {
+    padding: 2em;
+    object-fit: contain;
+  
+}
+
+#companyDescription{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: -0.4px;
+  text-align: left;
+  color: #8d8c8c;
+}
+
+
+@media only screen and (min-width: 1025px) { 
+    #companyPhoto {
+       
+        width: 50%;
+        object-fit: contain;
+    }
+}

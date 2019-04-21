@@ -1,3 +1,20 @@
 #querycards {
-    margin-left: 13%
+    margin-left: 13%;
+    text-align: left !important;
+    margin-top: 3em;
+}
+
+#titulo {
+    font-weight: bold;
+    color: #1a0e49;
+    
+}
+
+#tipo, #pais {
+    color: #8d8c8c;
+    font-weight: normal;
+}
+
+#foto{
+    padding: 1em;
 }

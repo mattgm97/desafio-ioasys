@@ -38,19 +38,22 @@ class App extends Component {
           values.push(entry[1]);
         }
 
-        console.log(values)
+        //console.log(values)
         this.setState({
           access: {
-            access_token: values[0],
+            "access-token": values[0],
             client: values[2],
             uid: values[6]
           }
         });
+        sessionStorage.setItem('acessos', JSON.stringify({"access-token": values[0],
+        client: values[2],
+        uid: values[6]}));
         //console.log(this.state.access)
         return res.json()
       })
       .then(response => {
-        console.log(response)
+        //console.log(response)
         this.setState({ logged: true })
       })
       .catch(err => console.log("Erro de autentificação"))
@@ -60,23 +63,33 @@ class App extends Component {
 
   showField = () => {
     let newstate = !this.state.showInput;
-    this.setState({ showInput: newstate });
+    this.setState({ showInput: newstate, companieShow: false, company: {} });
   }
 
 
   showCompanies = (event) => {
     let searchText = event.target.value;
-    fetch(`http://empresas.ioasys.com.br/api/v1/enterprises?enterprise_types=1&name=${searchText}`,
+    // console.log(
+    //   this.state.access
+    //   )
+    fetch(`http://empresas.ioasys.com.br/api/v1/enterprises?name=${searchText}`,
       {
-        headers: {
-          ...this.state.access
-        }
+        headers: this.state.access
+        
       })
       .then(res => res.json())
       .then(result => {
-        console.log(result)
+       // console.log(result)
+        this.setState({
+          companieShow: true,
+          company: result
+        });
       }
       )
+
+  }
+
+  showMoreInfo = () => {
 
   }
 
@@ -115,11 +128,30 @@ class App extends Component {
 
       )
     }
+
+    let Empresas = null;
+    if(this.state.companieShow) {
+      //console.log(this.state.company.enterprises)
+      Empresas = (
+        <div>
+         {this.state.company.enterprises.map((enterprise, index)=>{
+           return <Results dados={enterprise} key={index}/>
+         })}
+        </div>
+        
+     // 
+      )
+      
+    }
+
     return (
       <div className="App">
-        <Header showField={this.showField} mostrar={this.state.showInput} />
+        <Header showField={this.showField} mostrar={this.state.showInput} executarPesquisa={this.showCompanies} />
         {!this.state.showInput ? <h2 className="text-center" id="pesquisa">Clique na busca para iniciar.</h2> : null}
+        {Empresas}
       </div>
+
+      
     );
   }
 }
