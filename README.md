@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+-Na tela inicial do programa, existe um formulário de login. Para entrar no aplicativo use os dados: "email" : "testeapple@ioasys.com.br","password" : "12341234". 
+-Para procurar uma empresa, clique na lupa e digite o nome desejado.
+-Para ter acesso a mais informações sobre a empresa, basta clicar no card da desejada.
+Para pesquisar uma nova empresa, volte a tela principal clicando no logo localizado no header do aplicativo.
+
 ## Available Scripts
 
 In the project directory, you can run:
